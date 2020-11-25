@@ -1,0 +1,11 @@
+﻿id,title,salary,department_id
+1,Business Analyst,"100,000",10
+2,Product Owner,"150,000",11
+3,Web Developer,"120,000",11
+4,Release Manager,"130,000",12
+5,Attorney,"140,000",13
+6,Legal Assistant,"70,000",10
+7,Executive Secretary,"80,000",11
+8,Sales Engineer,"900,000",14
+9,Technical Writer,"600,000",15
+10,HR Specialist,"900,000",11
