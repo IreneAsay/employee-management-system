@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
     database: "employees_db",
 });
 
-function makeSelections() { 
+function makeSelections() {
     inquirer
         .prompt([
             {
@@ -59,20 +59,39 @@ function viewAllEmployees() {
     connection.connect(function (err) {
         if (err) throw err;
         console.log("connected as id " + connection.threadId + "\n");
-        connection.query("SELECT * FROM employee", (err, res) => {
+        connection.query(
+          `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager FROM employee 
+            LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
+            LEFT JOIN role ON employee.role_id = role.id 
+            LEFT JOIN department On role.department_id = department.id `,
+          (err, res) => {
             if (err) throw err;
             console.table(res);
             connection.end();
-        });
+          }
+        );
     });
 };
 
 function viewAllEmployeesByDepartment() {
-    inquirer.prompt().then(function (response) {
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                message: "Please enter department name",
+                name: "department"
+            },
+        ]
+    ).then(function (response) {
         connection.connect(function (err) {
             if (err) throw err;
             console.log("connected as id " + connection.threadId + "\n");
-            connection.query("SELECT * FROM employee WHERE department = ", {} (err, res) => {
+            connection.query(`SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager FROM employee 
+            LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
+            JOIN role ON employee.role_id = role.id 
+            JOIN department On role.department_id = department.id 
+            WHERE department.name = ?`,
+            response.department, (err, res) => {
                 if(err) throw err;
                 console.table(res);
                 connection.end();
