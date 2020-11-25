@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "sasdj2418",
+    password: "",
     database: "employees_db",
 });
 
@@ -164,7 +164,7 @@ function addAnEmployee() {
         .then(function (response) {
             var roleID = getRoleID(response.role);
             var managerID = getManagerID(response.manager);
-            console.log(response);
+            console.log([roleID, managerID]);
             connection.query(
                 `INSERT INTO employee SET first_name = ?, last_name =?, role_id = ?, manager_id = ?`,
                 [response.first, response.last, roleID, managerID],
@@ -206,6 +206,7 @@ function getRoleID(name) {
         (err, res) => {
             if (err) throw err;
             roleID = res[0].id;
+            console.log(roleID);
             return roleID;
         }
     );
@@ -219,6 +220,7 @@ function getManagerID(name) {
         (err, res) => {
             if (err) throw err;
             managerID = res[0].id;
+            console.log(managerID);
             return managerID;
         }
     );
