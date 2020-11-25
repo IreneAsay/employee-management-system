@@ -19,9 +19,13 @@ So that I can organize and plan my business
 
 ## Criteria
 
-This app was built under the following requirements:
+* This command-line application allows users to:
 
-* 
+  * Add departments, roles, employees
+
+  * View departments, roles, employees
+
+  * Update employee roles
 
 
 ## Installation
@@ -40,7 +44,8 @@ This application utilizes the following packages:
 * [console.table](https://www.npmjs.com/package/console.table)  is used to print MySQL rows to the console. There is a built-in version of `console.table`
 
 ## Questions
-For your reference, here is a [demo video](https://drive.google.com/file/d/17fM5yKZYT_INYx0Dq_b9nLTNhHukrSPL/view) to walk through the entire process of running this app.
+
+Do you have questions or are you interested in my application? Connect with me and we can chat more!
 
 More questions? Connect with me and we can chat more!
 
@@ -57,3 +62,34 @@ Email Address: irene.hsu.asay@gmail.com
 
 
 
+* The command-line application should allow users to:
+
+  * Add departments, roles, employees
+
+  * View departments, roles, employees
+
+  * Update employee roles
+
+## Bonus
+
+* The command-line application should allow users to:
+
+  * Update employee managers
+
+  * View employees by manager
+
+  * Delete departments, roles, and employees
+
+  * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
+
+
+## Submission on BCS
+
+You are required to submit the following:
+
+* The URL of the GitHub repository
+
+* A video demonstrating the entirety of the app's functionality 
+
+- - -
+© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

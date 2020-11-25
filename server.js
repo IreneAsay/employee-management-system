@@ -161,9 +161,9 @@ function addAnEmployee() {
                 choices: getManagers(),
             },
         ])
-        .then(function (response) {
-            var roleID = getRoleID(response.role);
-            var managerID = getManagerID(response.manager);
+        .then(async function (response) {
+            var roleID = await getRoleID(response.role);
+            var managerID = await getManagerID(response.manager);
             console.log([roleID, managerID]);
             connection.query(
                 `INSERT INTO employee SET first_name = ?, last_name =?, role_id = ?, manager_id = ?`,
@@ -199,29 +199,33 @@ function getManagers() {
 }
 
 function getRoleID(name) {
-    var roleID;
-    connection.query(
-        `SELECT id FROM role WHERE role.title = ?`,
-        name,
-        (err, res) => {
-            if (err) throw err;
-            roleID = res[0].id;
-            console.log(roleID);
-            return roleID;
-        }
-    );
+    return new Promise(resolve => {
+        var roleID;
+        connection.query(
+            `SELECT id FROM role WHERE role.title = ?`,
+            name,
+            (err, res) => {
+                if (err) throw err;
+                roleID = res[0].id;
+                console.log(roleID);
+                resolve(roleID);
+            }
+        );
+    })
 }
 
 function getManagerID(name) {
-    var managerID;
-    connection.query(
-        `SELECT id FROM employee WHERE employee.first_name = ?`,
-        name,
-        (err, res) => {
-            if (err) throw err;
-            managerID = res[0].id;
-            console.log(managerID);
-            return managerID;
-        }
-    );
+    return new Promise(resolve => {
+        var managerID;
+        connection.query(
+            `SELECT id FROM employee WHERE employee.first_name = ?`,
+            name,
+            (err, res) => {
+                if (err) throw err;
+                managerID = res[0].id;
+                console.log(managerID);
+                resolve(managerID);
+            }
+        );
+    })
 }
