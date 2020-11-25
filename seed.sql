@@ -30,6 +30,3 @@ SELECT * FROM employee;
 SELECT * FROM role;
 SELECT * FROM department;
 
-INSERT INTO department (name) values ('Localization');
-INSERT INTO role (title,salary,department_id) values ('Scrum Master', 100000, 12345);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) values ('Anna', 'Lee', 56789, 09876);

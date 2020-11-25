@@ -1,4 +1,4 @@
-﻿id,first_name,last_name,role_id,manager_id
+id,first_name,last_name,role_id,manager_id
 1,Jack,Frost,1001,101
 2,Connor,Bear,1002,102
 3,Gery,Forrest,1002,103
