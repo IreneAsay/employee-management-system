@@ -9,6 +9,11 @@ const connection = mysql.createConnection({
     database: "employees_db",
 });
 
+connection.connect(function (err) {
+    if (err) throw err;
+    else makeSelections();
+});
+
 function makeSelections() {
     inquirer
         .prompt([
@@ -69,25 +74,20 @@ function makeSelections() {
             }
         });
 }
-makeSelections();
-
 function viewAllEmployees() {
-    connection.connect(function (err) {
-        if (err) throw err;
-        console.log("connected as id " + connection.threadId + "\n");
-        connection.query(
-            `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
-                        FROM employee 
-                        LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
-                        LEFT JOIN role ON employee.role_id = role.id 
-                        LEFT JOIN department On role.department_id = department.id`,
-            (err, res) => {
-                if (err) throw err;
-                console.table(res);
-                makeSelections();
-            }
-        );
-    });
+    console.log("connected as id " + connection.threadId + "\n");
+    connection.query(
+        `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
+                    FROM employee 
+                    LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
+                    LEFT JOIN role ON employee.role_id = role.id 
+                    LEFT JOIN department On role.department_id = department.id`,
+        (err, res) => {
+            if (err) throw err;
+            console.table(res);
+            makeSelections();
+        }
+    );
 }
 
 function viewAllEmployeesByDepartment() {
@@ -100,24 +100,21 @@ function viewAllEmployeesByDepartment() {
             },
         ])
         .then(function (response) {
-            connection.connect(function (err) {
-                if (err) throw err;
-                console.log("connected as id " + connection.threadId + "\n");
-                connection.query(
-                    `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
-                                FROM employee 
-                                LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
-                                JOIN role ON employee.role_id = role.id 
-                                JOIN department On role.department_id = department.id 
-                                WHERE department.name = ?`,
-                    response.department,
-                    (err, res) => {
-                        if (err) throw err;
-                        console.table(res);
-                        makeSelections();
-                    }
-                );
-            });
+            console.log("connected as id " + connection.threadId + "\n");
+            connection.query(
+                `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
+                            FROM employee 
+                            LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
+                            JOIN role ON employee.role_id = role.id 
+                            JOIN department On role.department_id = department.id 
+                            WHERE department.name = ?`,
+                response.department,
+                (err, res) => {
+                    if (err) throw err;
+                    console.table(res);
+                    makeSelections();
+                }
+            );
         });
 }
 
@@ -131,16 +128,14 @@ function viewAllEmployeesByManager() {
             },
         ])
         .then(function (response) {
-            connection.connect(function (err) {
-                if (err) throw err;
-                console.log("connected as id " + connection.threadId + "\n");
-                connection.query(
-                    `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
-            FROM employee 
-            LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
-            JOIN role ON employee.role_id = role.id 
-            JOIN department On role.department_id = department.id 
-            WHERE e2.first_name = ?`,
+            console.log("connected as id " + connection.threadId + "\n");
+            connection.query(
+                `SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, e2.first_name AS manager 
+                FROM employee 
+                LEFT JOIN employee AS e2 ON e2.id = employee.manager_id 
+                JOIN role ON employee.role_id = role.id 
+                JOIN department On role.department_id = department.id 
+                WHERE e2.first_name = ?`,
                     response.manager,
                     (err, res) => {
                         if (err) throw err;
@@ -148,7 +143,6 @@ function viewAllEmployeesByManager() {
                         makeSelections();
                     }
                 );
-            });
         });
 }
 
@@ -181,7 +175,6 @@ async function addAnEmployee() {
         .then(async function (response) {
             var roleID = await getRoleID(response.role);
             var managerID = await getManagerID(response.manager);
-            console.log([response.first, response.last, roleID, managerID]);
             connection.query(
                 `INSERT INTO employee SET first_name = ?, last_name =?, role_id = ?, manager_id = ?`,
                 [response.first, response.last, roleID, managerID],
@@ -281,20 +274,17 @@ async function removeAnEmployee() {
 }
 
 function viewAllRoles() {
-    connection.connect(function (err) {
-        if (err) throw err;
-        console.log("connected as id " + connection.threadId + "\n");
-        connection.query(
-            `SELECT role.id, role.title, role.salary, department.name AS department 
-                        FROM role 
-                        LEFT JOIN department On role.department_id = department.id`,
-            (err, res) => {
-                if (err) throw err;
-                console.table(res);
-                makeSelections();
-            }
-        );
-    });
+    console.log("connected as id " + connection.threadId + "\n");
+    connection.query(
+        `SELECT role.id, role.title, role.salary, department.name AS department 
+                    FROM role 
+                    LEFT JOIN department On role.department_id = department.id`,
+        (err, res) => {
+            if (err) throw err;
+            console.table(res);
+            makeSelections();
+        }
+    );
 }
 
 async function addAnRole() {
@@ -332,14 +322,11 @@ async function addAnRole() {
 }
 
 function viewAllDepartments() {
-    connection.connect(function (err) {
+    console.log("connected as id " + connection.threadId + "\n");
+    connection.query(`SELECT * FROM department`, (err, res) => {
         if (err) throw err;
-        console.log("connected as id " + connection.threadId + "\n");
-        connection.query(`SELECT * FROM department`, (err, res) => {
-            if (err) throw err;
-            console.table(res);
-            makeSelections();
-        });
+        console.table(res);
+        makeSelections();
     });
 }
 
@@ -448,3 +435,8 @@ function getDepartmentID(name) {
         );
     });
 }
+
+process.on("SIGINT", function () {
+    connection.end();
+    process.exit();
+});

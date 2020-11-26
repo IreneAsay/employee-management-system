@@ -1,39 +1,40 @@
-INSERT INTO department
-(department)
+INSERT INTO employee
+(first_name, last_name, role_id, manager_id)
 
 VALUES
-('R&D')
-('Sales')
-('Human Resource')
-('Legal')
-('Operation')
+('Jack','Frost',1,2),
+('Connor','Bear',2,1),
+('Amina','Beeler',3,2),
+('JingWen','Chen',4,3),
+('Dong','Yin',5,5),
+('Chen','Bing',6,4),
+('Dofu','Cho',7,4),
+('Qili','Xiang',8,3),
+('Cathy','Baker',9,2),
+('Gery','Fork',10,1);
 
 INSERT INTO role
 (title, salary, department_id)
 
 VALUES
-('Business Analyst',100000,10)
-('Product Owner',150000,11)
-('Web Developer',120000,11)
-('Release Manager',130000,12)
-('Attorney',140000,13)
-('Legal Assistant',70000,10)
-('Executive Secretary',80,000,11)
-('Sales Engineer',900000,14)
-('Technical Writer',600000,15)
-('HR Specialist',900000,16)
+('Business Analyst',100000,5),
+('Product Owner',150000,1),
+('Web Developer',120000,1),
+('Release Manager',130000,1),
+('Attorney',140000,4),
+('Legal Assistant',70000,4),
+('Executive Secretary',80000,5),
+('Sales Engineer',900000,2),
+('Technical Writer',600000,1),
+('HR Specialist',900000,3);
 
-INSERT INTO employee
-(first_name, last_name, role_id, manager_id)
+
+INSERT INTO department
+(name)
 
 VALUES
-('Jack','Frost',1001,101)
-('Connor','Bear',1002,102)
-('Gery','Forrest',1002,103)
-('Amina','Beeler',1003,105)
-('JingWen','Chen',1003,105)
-('Dong','Yin',1003,105)
-('Chen','Bing',1004,101)
-('Dofu','Cho',1005,104)
-('Qili','Xiang',1006,103)
-('Cathy','Baker',1007,106)
+('R&D'),
+('Sales'),
+('Human Resource'),
+('Legal'),
+('Operation');
