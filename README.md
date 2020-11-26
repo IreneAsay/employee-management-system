@@ -7,7 +7,13 @@ This **Employee Management System** is a content management tool that utilizes n
 
 ## Table of Content
 
-
+  - [Project Description](#project-description)
+  - [User Story](#user-story)
+  - [Criteria](#criteria)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Questions](#questions)
+  - [License](#license)
 
 ## User Story
 
@@ -19,13 +25,19 @@ So that I can organize and plan my business
 
 ## Criteria
 
-* This command-line application allows users to:
+  This command-line application allows users to:
 
   * Add departments, roles, employees
 
   * View departments, roles, employees
 
   * Update employee roles
+  
+  * Update employee managers
+
+  * View employees by manager
+
+  * Delete employees
 
 
 ## Installation
@@ -45,7 +57,7 @@ This application utilizes the following packages:
 
 ## Questions
 
-Do you have questions or are you interested in my application? Connect with me and we can chat more!
+For your reference, here is a [demo video]() to walk through the entire process of running this app.
 
 More questions? Connect with me and we can chat more!
 
@@ -57,39 +69,3 @@ Email Address: irene.hsu.asay@gmail.com
 ## License
 
 © Irene Asay. All Rights Reserved. Under the [MIT/](./LICENSE) license.
-
-
-
-
-
-* The command-line application should allow users to:
-
-  * Add departments, roles, employees
-
-  * View departments, roles, employees
-
-  * Update employee roles
-
-## Bonus
-
-* The command-line application should allow users to:
-
-  * Update employee managers
-
-  * View employees by manager
-
-  * Delete departments, roles, and employees
-
-  * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
-
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the GitHub repository
-
-* A video demonstrating the entirety of the app's functionality 
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
