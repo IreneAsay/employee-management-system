@@ -3,7 +3,7 @@
 ## Project Description 
 This **Employee Management System** is a content management tool that utilizes node, inquirer, and MySQL to manage a company's employees. This interface is designed to make it easy for non-developers to view and interact with information stored in databases.
 
-![Screenshot](assets/screenshot.png)
+![Screenshot](EMS_screenshot.png)
 
 ## Table of Content
 
@@ -27,9 +27,9 @@ So that I can organize and plan my business
 
   This command-line application allows users to:
 
+  * View departments, roles, employees  
+  
   * Add departments, roles, employees
-
-  * View departments, roles, employees
 
   * Update employee roles
   
@@ -57,7 +57,7 @@ This application utilizes the following packages:
 
 ## Questions
 
-For your reference, here is a [demo video]() to walk through the entire process of running this app.
+For your reference, here is a [demo video](https://drive.google.com/file/d/1cKCpkW1VPCJREnaTvJG_A-56Gk9i0kK0/view) to walk through the entire process of running this app.
 
 More questions? Connect with me and we can chat more!
 
