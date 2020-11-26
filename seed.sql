@@ -1,32 +1,39 @@
-DROP DATABASE IF EXISTS employees_db;
-CREATE DATABASE employees_db;
-USE employees_db;
+INSERT INTO department
+(department)
 
-CREATE TABLE employee(
-  id INTEGER(10) AUTO_INCREMENT NOT NULL,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  role_id INT NOT NULL,
-  manager_id INT NOT NULL,
-  PRIMARY KEY (id)
-);
+VALUES
+('R&D')
+('Sales')
+('Human Resource')
+('Legal')
+('Operation')
 
-CREATE TABLE role(
-  id INTEGER(11) AUTO_INCREMENT NOT NULL,
-  title VARCHAR(30),
-  salary DECIMAL(10,2),
-  department_id INT NOT NULL,
-  PRIMARY KEY (id)
-);
+INSERT INTO role
+(title, salary, department_id)
 
+VALUES
+('Business Analyst',100000,10)
+('Product Owner',150000,11)
+('Web Developer',120000,11)
+('Release Manager',130000,12)
+('Attorney',140000,13)
+('Legal Assistant',70000,10)
+('Executive Secretary',80,000,11)
+('Sales Engineer',900000,14)
+('Technical Writer',600000,15)
+('HR Specialist',900000,16)
 
-CREATE TABLE department(
-  id INTEGER(11) AUTO_INCREMENT NOT NULL,
-  name VARCHAR(30),
-  PRIMARY KEY (id)
-);
+INSERT INTO employee
+(first_name, last_name, role_id, manager_id)
 
-SELECT * FROM employee;
-SELECT * FROM role;
-SELECT * FROM department;
-
+VALUES
+('Jack','Frost',1001,101)
+('Connor','Bear',1002,102)
+('Gery','Forrest',1002,103)
+('Amina','Beeler',1003,105)
+('JingWen','Chen',1003,105)
+('Dong','Yin',1003,105)
+('Chen','Bing',1004,101)
+('Dofu','Cho',1005,104)
+('Qili','Xiang',1006,103)
+('Cathy','Baker',1007,106)
